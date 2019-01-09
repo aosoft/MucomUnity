@@ -84,12 +84,13 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;MUCOMMODULE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.;..\mucom88\src;..\mucom88\src\dummy;..\mucom88\src\plugin</AdditionalIncludeDirectories>
+      <AdditionalOptions>/wd4716 /wd4996 /Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -98,12 +99,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;MUCOMMODULE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.;..\mucom88\src;..\mucom88\src\dummy;..\mucom88\src\plugin</AdditionalIncludeDirectories>
+      <AdditionalOptions>/wd4716 /wd4996 /Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -112,7 +114,6 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -120,6 +121,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;MUCOMMODULE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.;..\mucom88\src;..\mucom88\src\dummy;..\mucom88\src\plugin</AdditionalIncludeDirectories>
+      <AdditionalOptions>/wd4716 /wd4996 /Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -130,7 +133,6 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -138,6 +140,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;MUCOMMODULE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.;..\mucom88\src;..\mucom88\src\dummy;..\mucom88\src\plugin</AdditionalIncludeDirectories>
+      <AdditionalOptions>/wd4716 /wd4996 /Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -147,10 +151,64 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\mucom88\src\adpcm.h" />
+    <ClInclude Include="..\mucom88\src\bin_errmsg.h" />
+    <ClInclude Include="..\mucom88\src\bin_expand.h" />
+    <ClInclude Include="..\mucom88\src\bin_msub.h" />
+    <ClInclude Include="..\mucom88\src\bin_muc88.h" />
+    <ClInclude Include="..\mucom88\src\bin_music.h" />
+    <ClInclude Include="..\mucom88\src\bin_music2.h" />
+    <ClInclude Include="..\mucom88\src\bin_smon.h" />
+    <ClInclude Include="..\mucom88\src\bin_ssgdat.h" />
+    <ClInclude Include="..\mucom88\src\bin_time.h" />
+    <ClInclude Include="..\mucom88\src\bin_voice.h" />
+    <ClInclude Include="..\mucom88\src\cmucom.h" />
+    <ClInclude Include="..\mucom88\src\dummy\callback.h" />
+    <ClInclude Include="..\mucom88\src\dummy\osdep.h" />
+    <ClInclude Include="..\mucom88\src\fmgen\diag.h" />
+    <ClInclude Include="..\mucom88\src\fmgen\file.h" />
+    <ClInclude Include="..\mucom88\src\fmgen\fmgen.h" />
+    <ClInclude Include="..\mucom88\src\fmgen\fmgeninl.h" />
+    <ClInclude Include="..\mucom88\src\fmgen\fmtimer.h" />
+    <ClInclude Include="..\mucom88\src\fmgen\headers.h" />
+    <ClInclude Include="..\mucom88\src\fmgen\misc.h" />
+    <ClInclude Include="..\mucom88\src\fmgen\opm.h" />
+    <ClInclude Include="..\mucom88\src\fmgen\opna.h" />
+    <ClInclude Include="..\mucom88\src\fmgen\psg.h" />
+    <ClInclude Include="..\mucom88\src\fmgen\types.h" />
+    <ClInclude Include="..\mucom88\src\headers.h" />
+    <ClInclude Include="..\mucom88\src\md5.h" />
+    <ClInclude Include="..\mucom88\src\membuf.h" />
+    <ClInclude Include="..\mucom88\src\mod\mucom_module.h" />
+    <ClInclude Include="..\mucom88\src\mucom88if.h" />
+    <ClInclude Include="..\mucom88\src\mucomerror.h" />
+    <ClInclude Include="..\mucom88\src\mucomvm.h" />
+    <ClInclude Include="..\mucom88\src\plugin\plugin.h" />
+    <ClInclude Include="..\mucom88\src\soundbuf.h" />
+    <ClInclude Include="..\mucom88\src\Z80\Z80.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="unistd.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\mucom88\src\adpcm.cpp" />
+    <ClCompile Include="..\mucom88\src\cmucom.cpp" />
+    <ClCompile Include="..\mucom88\src\dummy\callback.cpp" />
+    <ClCompile Include="..\mucom88\src\dummy\osdep.cpp" />
+    <ClCompile Include="..\mucom88\src\fmgen\file.cpp" />
+    <ClCompile Include="..\mucom88\src\fmgen\fmgen.cpp" />
+    <ClCompile Include="..\mucom88\src\fmgen\fmtimer.cpp" />
+    <ClCompile Include="..\mucom88\src\fmgen\opm.cpp" />
+    <ClCompile Include="..\mucom88\src\fmgen\opna.cpp" />
+    <ClCompile Include="..\mucom88\src\fmgen\psg.cpp" />
+    <ClCompile Include="..\mucom88\src\md5.c" />
+    <ClCompile Include="..\mucom88\src\membuf.cpp" />
+    <ClCompile Include="..\mucom88\src\mod\mucom_module.cpp" />
+    <ClCompile Include="..\mucom88\src\mucomerror.cpp" />
+    <ClCompile Include="..\mucom88\src\mucomvm.cpp" />
+    <ClCompile Include="..\mucom88\src\plugin\plugin.cpp" />
+    <ClCompile Include="..\mucom88\src\soundbuf.cpp" />
+    <ClCompile Include="..\mucom88\src\Z80\Z80.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="MucomModule.cpp" />
     <ClCompile Include="stdafx.cpp">

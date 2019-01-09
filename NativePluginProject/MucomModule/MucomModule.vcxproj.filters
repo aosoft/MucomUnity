@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Mucom">
+      <UniqueIdentifier>{32c9b818-5e1b-4c9e-a2f0-c0f615f520a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mucom\Z80">
+      <UniqueIdentifier>{33134352-48a3-435a-9525-6eabd6c103be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mucom\fmgen">
+      <UniqueIdentifier>{6f645cef-4996-40d4-b7bf-0d230d12628e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mucom\mod">
+      <UniqueIdentifier>{b9f5ede9-d92c-444d-bd08-ff090e5eb735}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mucom\dummy">
+      <UniqueIdentifier>{7d7cf50a-8bfb-47fd-8dcd-4f04a2837dea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mucom\plugin">
+      <UniqueIdentifier>{c8208244-31da-4583-8eb5-2f22cf90ba51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -20,6 +38,114 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\adpcm.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\bin_errmsg.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\bin_expand.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\bin_msub.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\bin_muc88.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\bin_music.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\bin_music2.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\bin_smon.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\bin_ssgdat.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\bin_time.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\bin_voice.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\cmucom.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\headers.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\md5.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\membuf.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\mucom88if.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\mucomerror.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\mucomvm.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\soundbuf.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\fmgen\diag.h">
+      <Filter>Mucom\fmgen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\fmgen\file.h">
+      <Filter>Mucom\fmgen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\fmgen\fmgen.h">
+      <Filter>Mucom\fmgen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\fmgen\fmgeninl.h">
+      <Filter>Mucom\fmgen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\fmgen\fmtimer.h">
+      <Filter>Mucom\fmgen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\fmgen\headers.h">
+      <Filter>Mucom\fmgen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\fmgen\misc.h">
+      <Filter>Mucom\fmgen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\fmgen\opm.h">
+      <Filter>Mucom\fmgen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\fmgen\opna.h">
+      <Filter>Mucom\fmgen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\fmgen\psg.h">
+      <Filter>Mucom\fmgen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\fmgen\types.h">
+      <Filter>Mucom\fmgen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\mod\mucom_module.h">
+      <Filter>Mucom\mod</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\Z80\Z80.h">
+      <Filter>Mucom\Z80</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\dummy\callback.h">
+      <Filter>Mucom\dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\dummy\osdep.h">
+      <Filter>Mucom\dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="unistd.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\plugin\plugin.h">
+      <Filter>Mucom\plugin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -31,6 +157,60 @@
     </ClCompile>
     <ClCompile Include="dllmain.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\md5.c">
+      <Filter>Mucom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\adpcm.cpp">
+      <Filter>Mucom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\cmucom.cpp">
+      <Filter>Mucom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\membuf.cpp">
+      <Filter>Mucom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\mucomerror.cpp">
+      <Filter>Mucom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\mucomvm.cpp">
+      <Filter>Mucom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\soundbuf.cpp">
+      <Filter>Mucom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\fmgen\file.cpp">
+      <Filter>Mucom\fmgen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\fmgen\fmgen.cpp">
+      <Filter>Mucom\fmgen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\fmgen\fmtimer.cpp">
+      <Filter>Mucom\fmgen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\fmgen\opm.cpp">
+      <Filter>Mucom\fmgen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\fmgen\opna.cpp">
+      <Filter>Mucom\fmgen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\fmgen\psg.cpp">
+      <Filter>Mucom\fmgen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\mod\mucom_module.cpp">
+      <Filter>Mucom\mod</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\Z80\Z80.cpp">
+      <Filter>Mucom\Z80</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\dummy\callback.cpp">
+      <Filter>Mucom\dummy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\dummy\osdep.cpp">
+      <Filter>Mucom\dummy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\plugin\plugin.cpp">
+      <Filter>Mucom\plugin</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

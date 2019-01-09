@@ -89,7 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;MUCOMMODULE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;..\mucom88\src;..\mucom88\src\dummy;..\mucom88\src\plugin</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\..\PluginAPI;..\mucom88\src;..\mucom88\src\dummy;..\mucom88\src\plugin</AdditionalIncludeDirectories>
       <AdditionalOptions>/wd4716 /wd4996 /Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -104,13 +104,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;MUCOMMODULE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;..\mucom88\src;..\mucom88\src\dummy;..\mucom88\src\plugin</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\..\PluginAPI;..\mucom88\src;..\mucom88\src\dummy;..\mucom88\src\plugin</AdditionalIncludeDirectories>
       <AdditionalOptions>/wd4716 /wd4996 /Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y $(OutDir)$(TargetName)$(TargetExt) $(SolutionDir)\..\Assets\MucomModule\Plugins\x86_64\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -121,7 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;MUCOMMODULE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;..\mucom88\src;..\mucom88\src\dummy;..\mucom88\src\plugin</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\..\PluginAPI;..\mucom88\src;..\mucom88\src\dummy;..\mucom88\src\plugin</AdditionalIncludeDirectories>
       <AdditionalOptions>/wd4716 /wd4996 /Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -140,7 +143,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;MUCOMMODULE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;..\mucom88\src;..\mucom88\src\dummy;..\mucom88\src\plugin</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\..\PluginAPI;..\mucom88\src;..\mucom88\src\dummy;..\mucom88\src\plugin</AdditionalIncludeDirectories>
       <AdditionalOptions>/wd4716 /wd4996 /Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>

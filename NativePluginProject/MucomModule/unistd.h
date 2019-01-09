@@ -2,7 +2,7 @@
 
 #include <direct.h>
 
-int chdir(const char *dir)
+/*int chdir(const char *dir)
 {
 	return _chdir(dir);
-}
+}*/

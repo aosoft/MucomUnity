@@ -10,13 +10,14 @@ public class MucomControl : MonoBehaviour
 {
 	public AudioSource _audioSource;
 	public InputField _text;
-	public Button _button;
+	public Button _compileButton;
+	public Button _stopButton;
 
 	private MucomAudioClip _audioClip;
 
 	private void Awake()
 	{
-		_button.OnClickAsObservable().Subscribe(_ =>
+		_compileButton.OnClickAsObservable().Subscribe(_ =>
 		{
 			_audioSource.Stop();
 
@@ -39,6 +40,7 @@ public class MucomControl : MonoBehaviour
 				}
 				else
 				{
+					Debug.LogError(audioClip.CompileResult);
 					audioClip.Dispose();
 				}
 			}
@@ -48,11 +50,16 @@ public class MucomControl : MonoBehaviour
 				throw;
 			}
 		}).AddTo(this);
+
+		_stopButton.OnClickAsObservable().Subscribe(_ =>
+		{
+			_audioSource.Stop();
+		}).AddTo(this);
+
 	}
 
 	private void OnDestroy()
 	{
-		_audioSource.clip = null;
 		_audioClip?.Dispose();
 		_audioClip = null;
 	}

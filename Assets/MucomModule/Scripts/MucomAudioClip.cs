@@ -4,42 +4,67 @@ using UnityEngine;
 
 namespace Mucom
 {
-	[RequireComponent(typeof(AudioSource))]
-	public class MucomAudioSource : MonoBehaviour
+	public class MucomAudioClip : System.IDisposable
 	{
-		private AudioSource _audioSource;
 		private AudioClip _audioClip;
 		private MucomModule _mucom;
 
 		private readonly int MucomSampleRate = 55467;
 
-		private void Awake()
+		public MucomAudioClip(string workingDirectory, string songFilename)
 		{
-			_audioSource = GetComponent<AudioSource>();
+			try
+			{
+				_mucom = new MucomModule();
+				_mucom.SetRate(MucomSampleRate);
 
-			_mucom = new MucomModule();
-			_mucom.SetRate(MucomSampleRate);
-
-			_mucom.Open(@".", @"");
-			_mucom.Play();
-
-			_audioClip = AudioClip.Create(
-				"mucom", int.MaxValue, 2, MucomSampleRate, true, OnPCMReaderCallback, OnPCMSetPositionCallback);
-			_audioSource.clip = _audioClip;
-
-			_audioSource.Play();
+				AvailableSongData = _mucom.Open(workingDirectory, songFilename);
+				if (AvailableSongData)
+				{
+					_mucom.Play();
+					_audioClip = AudioClip.Create(
+						string.Format("mucom({0})", songFilename),
+						int.MaxValue, 2, MucomSampleRate, true, OnPCMReaderCallback, OnPCMSetPositionCallback);
+				}
+			}
+			catch
+			{
+				Dispose();
+				throw;
+			}
 		}
 
-		private void OnDestroy()
+		public void Dispose()
 		{
 			if (_audioClip != null)
 			{
-				Destroy(_audioClip);
+				Object.Destroy(_audioClip);
 			}
 
 			_mucom?.Close();
 			_mucom?.Dispose();
 			_mucom = null;
+		}
+
+		public AudioClip UnityAudioClip
+		{
+			get
+			{
+				return _audioClip;
+			}
+		}
+
+		public bool AvailableSongData
+		{
+			get;
+		}
+
+		public string CompileResult
+		{
+			get
+			{
+				return _mucom.GetResult();
+			}
 		}
 
 		private void OnPCMReaderCallback(float[] data)
@@ -61,5 +86,6 @@ namespace Mucom
 		private void OnPCMSetPositionCallback(int position)
 		{
 		}
+
 	}
 }

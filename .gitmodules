@@ -1,6 +1,3 @@
-[submodule "mucom88"]
-	path = mucom88
-	url = https://github.com/BouKiCHi/mucom88.git
 [submodule "NativePluginProject/mucom88"]
 	path = NativePluginProject/mucom88
-	url = https://github.com/BouKiCHi/mucom88.git
+	url = https://github.com/aosoft/mucom88.git

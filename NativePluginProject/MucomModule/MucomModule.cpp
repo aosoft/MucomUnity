@@ -30,6 +30,11 @@ void DestroyMucom(MucomModule *self)
 	delete self;
 }
 
+int MucomGetResultLength(MucomModule *self)
+{
+	return strlen(self->GetResult());
+}
+
 int32_t UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API CreateMucomModulePluginInstance(
 	void **buffer, int32_t bufferSize) noexcept try
 {
@@ -42,10 +47,12 @@ int32_t UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API CreateMucomModulePluginInstan
 		Proxy<void, int>::Func<&MucomModule::SetRate>,
 		Proxy<void, const char *>::Func<&MucomModule::SetPCM>,
 		Proxy<void, const char *>::Func<&MucomModule::SetVoice>,
+		Proxy<void, const char *>::Func<&MucomModule::SetOutput>,
 		Proxy<void, short *, int>::Func<&MucomModule::Mix>,
 		Proxy<bool>::Func<&MucomModule::Play>,
 		Proxy<void>::Func<&MucomModule::Close>,
 		Proxy<const char *>::Func<&MucomModule::GetResult>,
+		MucomGetResultLength
 	};
 
 	static constexpr int32_t requiredSize = sizeof(funcs) / sizeof(void *) + 1;

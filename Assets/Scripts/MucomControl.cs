@@ -35,6 +35,7 @@ public class MucomControl : MonoBehaviour
 			{
 				if (audioClip.AvailableSongData)
 				{
+					Debug.LogError(audioClip.CompileResult);
 					_audioSource.clip = audioClip.UnityAudioClip;
 					_audioSource.Play();
 				}

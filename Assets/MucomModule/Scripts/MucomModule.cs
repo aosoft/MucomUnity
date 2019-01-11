@@ -25,8 +25,9 @@ namespace Mucom
 		public delegate bool FnPlay(IntPtr self);
 
 		[UnmanagedFunctionPointer(CallingConvention.Winapi, CharSet = CharSet.Ansi)]
-		public delegate string FnGetResult(IntPtr self);
+		public delegate IntPtr FnGetResult(IntPtr self);
 
+		public delegate int FnGetResultLength(IntPtr self);
 
 		private IntPtr _self;
 		private FnAction _fnDestroy;
@@ -34,10 +35,12 @@ namespace Mucom
 		private FnSetRate _fnSetRate;
 		private FnSetFile _fnSetPCM;
 		private FnSetFile _fnSetVoice;
+		private FnSetFile _fnSetOutput;
 		private FnMix _fnMix;
 		private FnPlay _fnPlay;
 		private FnAction _fnClose;
 		private FnGetResult _fnGetResult;
+		private FnGetResultLength _fnGetResultLength;
 
 		public MucomModule()
 		{
@@ -54,10 +57,12 @@ namespace Mucom
 			_fnSetRate = Marshal.GetDelegateForFunctionPointer<FnSetRate>(buffer[3]);
 			_fnSetPCM = Marshal.GetDelegateForFunctionPointer<FnSetFile>(buffer[4]);
 			_fnSetVoice = Marshal.GetDelegateForFunctionPointer<FnSetFile>(buffer[5]);
-			_fnMix = Marshal.GetDelegateForFunctionPointer<FnMix>(buffer[6]);
-			_fnPlay = Marshal.GetDelegateForFunctionPointer<FnPlay>(buffer[7]);
-			_fnClose = Marshal.GetDelegateForFunctionPointer<FnAction>(buffer[8]);
-			_fnGetResult = Marshal.GetDelegateForFunctionPointer<FnGetResult>(buffer[9]);
+			_fnSetOutput = Marshal.GetDelegateForFunctionPointer<FnSetFile>(buffer[6]);
+			_fnMix = Marshal.GetDelegateForFunctionPointer<FnMix>(buffer[7]);
+			_fnPlay = Marshal.GetDelegateForFunctionPointer<FnPlay>(buffer[8]);
+			_fnClose = Marshal.GetDelegateForFunctionPointer<FnAction>(buffer[9]);
+			_fnGetResult = Marshal.GetDelegateForFunctionPointer<FnGetResult>(buffer[10]);
+			_fnGetResultLength = Marshal.GetDelegateForFunctionPointer<FnGetResultLength>(buffer[11]);
 		}
 
 		public void Dispose()
@@ -87,6 +92,11 @@ namespace Mucom
 			_fnSetVoice(_self, file);
 		}
 
+		public void SetOutput(string file)
+		{
+			_fnSetOutput(_self, file);
+		}
+
 		public void Mix(short[] buffer, int samples)
 		{
 			if (buffer.Length < samples * 2)
@@ -108,7 +118,10 @@ namespace Mucom
 
 		public string GetResult()
 		{
-			return _fnGetResult(_self);
+			var tmp = new byte[_fnGetResultLength(_self)];
+			Marshal.Copy(_fnGetResult(_self), tmp, 0, tmp.Length);
+
+			return System.Text.Encoding.GetEncoding(932).GetString(tmp);
 		}
 	}
 }

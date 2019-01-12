@@ -11,12 +11,16 @@ namespace Mucom
 
 		private readonly int MucomSampleRate = 55467;
 
-		public MucomAudioClip(string workingDirectory, string songFilename)
+		public MucomAudioClip(string workingDirectory, string songFilename, string outputFilename = null)
 		{
 			try
 			{
 				_mucom = new MucomModule();
 				_mucom.SetRate(MucomSampleRate);
+				if (!string.IsNullOrEmpty(outputFilename))
+				{
+					_mucom.SetOutput(outputFilename);
+				}
 
 				AvailableSongData = _mucom.Open(workingDirectory, songFilename);
 				if (AvailableSongData)

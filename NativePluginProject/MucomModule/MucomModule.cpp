@@ -8,7 +8,7 @@
 
 #include <IUnityInterface.h>
 
-#include "mod/mucom_module.h"
+#include "module/mucom_module.h"
 
 template<typename RetT, typename ... Args>
 struct Proxy

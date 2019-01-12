@@ -22,14 +22,14 @@
     <Filter Include="Mucom\fmgen">
       <UniqueIdentifier>{6f645cef-4996-40d4-b7bf-0d230d12628e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mucom\mod">
-      <UniqueIdentifier>{b9f5ede9-d92c-444d-bd08-ff090e5eb735}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Mucom\dummy">
       <UniqueIdentifier>{7d7cf50a-8bfb-47fd-8dcd-4f04a2837dea}</UniqueIdentifier>
     </Filter>
     <Filter Include="Mucom\plugin">
       <UniqueIdentifier>{c8208244-31da-4583-8eb5-2f22cf90ba51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mucom\module">
+      <UniqueIdentifier>{b9f5ede9-d92c-444d-bd08-ff090e5eb735}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -129,23 +129,26 @@
     <ClInclude Include="..\mucom88\src\fmgen\types.h">
       <Filter>Mucom\fmgen</Filter>
     </ClInclude>
-    <ClInclude Include="..\mucom88\src\mod\mucom_module.h">
-      <Filter>Mucom\mod</Filter>
-    </ClInclude>
     <ClInclude Include="..\mucom88\src\Z80\Z80.h">
       <Filter>Mucom\Z80</Filter>
-    </ClInclude>
-    <ClInclude Include="..\mucom88\src\dummy\callback.h">
-      <Filter>Mucom\dummy</Filter>
-    </ClInclude>
-    <ClInclude Include="..\mucom88\src\dummy\osdep.h">
-      <Filter>Mucom\dummy</Filter>
     </ClInclude>
     <ClInclude Include="unistd.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="..\mucom88\src\plugin\plugin.h">
       <Filter>Mucom\plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\module\mucom_module.h">
+      <Filter>Mucom\module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\dummy\osdep_dummy.h">
+      <Filter>Mucom\dummy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\callback.h">
+      <Filter>Mucom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mucom88\src\osdep.h">
+      <Filter>Mucom</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -197,20 +200,23 @@
     <ClCompile Include="..\mucom88\src\fmgen\psg.cpp">
       <Filter>Mucom\fmgen</Filter>
     </ClCompile>
-    <ClCompile Include="..\mucom88\src\mod\mucom_module.cpp">
-      <Filter>Mucom\mod</Filter>
-    </ClCompile>
     <ClCompile Include="..\mucom88\src\Z80\Z80.cpp">
       <Filter>Mucom\Z80</Filter>
     </ClCompile>
-    <ClCompile Include="..\mucom88\src\dummy\callback.cpp">
-      <Filter>Mucom\dummy</Filter>
-    </ClCompile>
-    <ClCompile Include="..\mucom88\src\dummy\osdep.cpp">
-      <Filter>Mucom\dummy</Filter>
-    </ClCompile>
     <ClCompile Include="..\mucom88\src\plugin\plugin.cpp">
       <Filter>Mucom\plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\module\mucom_module.cpp">
+      <Filter>Mucom\module</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\dummy\osdep_dummy.cpp">
+      <Filter>Mucom\dummy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\callback.cpp">
+      <Filter>Mucom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mucom88\src\osdep.cpp">
+      <Filter>Mucom</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

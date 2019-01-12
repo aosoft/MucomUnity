@@ -30,27 +30,27 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -165,9 +165,9 @@
     <ClInclude Include="..\mucom88\src\bin_ssgdat.h" />
     <ClInclude Include="..\mucom88\src\bin_time.h" />
     <ClInclude Include="..\mucom88\src\bin_voice.h" />
+    <ClInclude Include="..\mucom88\src\callback.h" />
     <ClInclude Include="..\mucom88\src\cmucom.h" />
-    <ClInclude Include="..\mucom88\src\dummy\callback.h" />
-    <ClInclude Include="..\mucom88\src\dummy\osdep.h" />
+    <ClInclude Include="..\mucom88\src\dummy\osdep_dummy.h" />
     <ClInclude Include="..\mucom88\src\fmgen\diag.h" />
     <ClInclude Include="..\mucom88\src\fmgen\file.h" />
     <ClInclude Include="..\mucom88\src\fmgen\fmgen.h" />
@@ -182,10 +182,11 @@
     <ClInclude Include="..\mucom88\src\headers.h" />
     <ClInclude Include="..\mucom88\src\md5.h" />
     <ClInclude Include="..\mucom88\src\membuf.h" />
-    <ClInclude Include="..\mucom88\src\mod\mucom_module.h" />
+    <ClInclude Include="..\mucom88\src\module\mucom_module.h" />
     <ClInclude Include="..\mucom88\src\mucom88if.h" />
     <ClInclude Include="..\mucom88\src\mucomerror.h" />
     <ClInclude Include="..\mucom88\src\mucomvm.h" />
+    <ClInclude Include="..\mucom88\src\osdep.h" />
     <ClInclude Include="..\mucom88\src\plugin\plugin.h" />
     <ClInclude Include="..\mucom88\src\soundbuf.h" />
     <ClInclude Include="..\mucom88\src\Z80\Z80.h" />
@@ -195,9 +196,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\mucom88\src\adpcm.cpp" />
+    <ClCompile Include="..\mucom88\src\callback.cpp" />
     <ClCompile Include="..\mucom88\src\cmucom.cpp" />
-    <ClCompile Include="..\mucom88\src\dummy\callback.cpp" />
-    <ClCompile Include="..\mucom88\src\dummy\osdep.cpp" />
+    <ClCompile Include="..\mucom88\src\dummy\osdep_dummy.cpp" />
     <ClCompile Include="..\mucom88\src\fmgen\file.cpp" />
     <ClCompile Include="..\mucom88\src\fmgen\fmgen.cpp" />
     <ClCompile Include="..\mucom88\src\fmgen\fmtimer.cpp" />
@@ -206,9 +207,10 @@
     <ClCompile Include="..\mucom88\src\fmgen\psg.cpp" />
     <ClCompile Include="..\mucom88\src\md5.c" />
     <ClCompile Include="..\mucom88\src\membuf.cpp" />
-    <ClCompile Include="..\mucom88\src\mod\mucom_module.cpp" />
+    <ClCompile Include="..\mucom88\src\module\mucom_module.cpp" />
     <ClCompile Include="..\mucom88\src\mucomerror.cpp" />
     <ClCompile Include="..\mucom88\src\mucomvm.cpp" />
+    <ClCompile Include="..\mucom88\src\osdep.cpp" />
     <ClCompile Include="..\mucom88\src\plugin\plugin.cpp" />
     <ClCompile Include="..\mucom88\src\soundbuf.cpp" />
     <ClCompile Include="..\mucom88\src\Z80\Z80.cpp" />

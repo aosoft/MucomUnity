@@ -49,7 +49,7 @@ namespace Mucom
 					SamplingRate = (uint)MucomSampleRate,
 					Clock = (uint)OpnaMasterClock,
 					Volume = 0,
-					Option = new object[] { System.Environment.CurrentDirectory }
+					Option = new object[] { appendReaderCallback }
 				};
 				_mds = new MDSound.MDSound((uint)MucomSampleRate, 1024, new MDSound.MDSound.Chip[] { chip });
 

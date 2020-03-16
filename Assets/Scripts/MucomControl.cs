@@ -17,16 +17,18 @@ public class MucomControl : MonoBehaviour
 
 	private void Awake()
 	{
+		mucomDotNET.Common.msg.MakeMessageDic(new string[] { });
+
 		_compileButton.OnClickAsObservable().Subscribe(_ =>
 		{
 			_audioSource.Stop();
 
 			using (var ms = new System.IO.MemoryStream())
+			using (var w = new StreamWriter(ms, System.Text.Encoding.GetEncoding(932)))
 			{
-				using (var w = new StreamWriter(ms, System.Text.Encoding.GetEncoding(932)))
-				{
-					w.Write(_text.text);
-				}
+				w.Write(_text.text);
+				w.Flush();
+				ms.Seek(0, SeekOrigin.Begin);
 
 				_audioSource.clip = null;
 				_audioClip?.Dispose();

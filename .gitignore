@@ -323,3 +323,8 @@ Assets/Plugins/UniRx.meta
 # Plugin Binary
 
 Assets/MucomModule/Plugins
+
+# StreamingAssets
+
+Assets/StreamingAssets/
+Assets/StreamingAssets.meta

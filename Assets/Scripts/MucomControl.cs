@@ -21,34 +21,37 @@ public class MucomControl : MonoBehaviour
 		{
 			_audioSource.Stop();
 
-			using (var w = new StreamWriter("mucombin.muc", false, System.Text.Encoding.GetEncoding(932)))
+			using (var ms = new System.IO.MemoryStream())
 			{
-				w.Write(_text.text);
-			}
-
-			_audioSource.clip = null;
-			_audioClip?.Dispose();
-			_audioClip = null;
-
-			var audioClip = new MucomAudioClip(".", "mucombin.muc");
-			try
-			{
-				if (audioClip.AvailableSongData)
+				using (var w = new StreamWriter(ms, System.Text.Encoding.GetEncoding(932)))
 				{
-					Debug.Log(audioClip.CompileResult);
-					_audioSource.clip = audioClip.UnityAudioClip;
-					_audioSource.Play();
+					w.Write(_text.text);
 				}
-				else
+
+				_audioSource.clip = null;
+				_audioClip?.Dispose();
+				_audioClip = null;
+
+				var audioClip = new MucomAudioClip(ms);
+				try
 				{
-					Debug.LogError(audioClip.CompileResult);
+					if (audioClip.AvailableSongData)
+					{
+						Debug.Log(audioClip.CompileResult);
+						_audioSource.clip = audioClip.UnityAudioClip;
+						_audioSource.Play();
+					}
+					else
+					{
+						Debug.LogError(audioClip.CompileResult);
+						audioClip.Dispose();
+					}
+				}
+				catch
+				{
 					audioClip.Dispose();
+					throw;
 				}
-			}
-			catch
-			{
-				audioClip.Dispose();
-				throw;
 			}
 		}).AddTo(this);
 

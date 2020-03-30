@@ -15,7 +15,7 @@ namespace MucomUnity
 		{
 			try
 			{
-				_driver = new Driver();
+				_driver = new Driver(MucomDotNetEncoding.Default);
 				_driver.Init(
 					dat => mdsound.MDSound.WriteYM2608(0, (byte)dat.port, (byte)dat.address, (byte)dat.data),
 					(_, __) => { },
@@ -26,8 +26,8 @@ namespace MucomUnity
 				_driver.StartRendering(mdsound.SampleRate, MucomMDSound.OpnaMasterClock);
 				_driver.MusicSTART(0);
 
-				UnityAudioClip = AudioClip.Create("mucom", int.MaxValue, 2, mdsound.SampleRate, true, OnPCMReaderCallback, OnPCMSetPositionCallback);
 				_mdsound = mdsound;
+				UnityAudioClip = AudioClip.Create("mucom", int.MaxValue, 2, mdsound.SampleRate, true, OnPCMReaderCallback, OnPCMSetPositionCallback);
 			}
 			catch
 			{

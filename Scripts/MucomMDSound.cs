@@ -5,9 +5,10 @@ namespace MucomUnity
 {
     public class MucomMDSound
     {
+		public static readonly int OpnaSampleRate = 55467;
 		public static readonly int OpnaMasterClock = 7987200;
 
-        public MucomMDSound(int sampleRate, int sampleBufferSize, Func<string, Stream> appendFileReaderCallback)
+        public MucomMDSound(int sampleBufferSize, Func<string, Stream> appendFileReaderCallback, int sampleRate)
         {
 			YM2608 = new MDSound.ym2608();
 			var chip = new MDSound.MDSound.Chip
@@ -28,6 +29,11 @@ namespace MucomUnity
 			SampleRate = sampleRate;
 			SampleBufferSize = sampleBufferSize;
 		}
+
+		public MucomMDSound(int sampleBufferSize, Func<string, Stream> appendFileReaderCallback) : this(sampleBufferSize, appendFileReaderCallback, OpnaSampleRate)
+		{
+		}
+
 
 		public MDSound.ym2608 YM2608 { get; }
 		public MDSound.MDSound MDSound { get; }

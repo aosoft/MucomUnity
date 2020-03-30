@@ -1,17 +1,9 @@
-MUCOM88 for Unity
+mucomDotNet for Unity
 ====
 
-[mucom.NET](https://github.com/kuma4649/mucomDotNET) を Unity の AudioClip として使えるようにしたものです。
+[mucom.NET](https://github.com/kuma4649/mucomDotNET) wrapped with Unity AudioClip.
 
-
-## 使い方
-
-1. UniRx をインストール
-2. StreamingAssets 下に PCM 、音色ファイル等を配置
-3. Unity Editor 上で実行
-
-
-## ライセンス
+## License
 
 * [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)
 

@@ -1,72 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using mucomDotNET.Compiler;
+﻿using System.IO;
+using System.Linq;
 using mucomDotNET.Driver;
-using System.IO;
+using musicDriverInterface;
+using UnityEngine;
 
-namespace Mucom
+namespace MucomUnity
 {
 	public class MucomAudioClip : System.IDisposable
 	{
-		private AudioClip _audioClip = null;
-		private string _outputFileName = null;
 		private Driver _driver = null;
-		private MDSound.MDSound _mds = null;
+		private MucomMDSound _mdsound = null;
 
-
-		private static readonly int MucomSampleRate = 55467;
-		private static readonly int OpnaMasterClock = 7987200;
-
-		public MucomAudioClip(Stream source)
+		public MucomAudioClip(MucomMDSound mdsound, MmlDatum[] srcBuf, System.Func<string, Stream> appendFileReaderCallback)
 		{
 			try
 			{
-				System.Func<string, Stream> appendReaderCallback = (filename) =>
-				{
-					return new FileStream(Path.Combine(Application.streamingAssetsPath, filename), FileMode.Open, FileAccess.Read);
-				};
-
-				var compiler = new Compiler();
-				compiler.Init();
-				var bin = compiler.Compile(source, appendReaderCallback);
-				if (bin == null)
-				{
-					AvailableSongData = false;
-					return;
-				}
-				Debug.Log(_outputFileName);
-				var ym2608 = new MDSound.ym2608();
-				var chip = new MDSound.MDSound.Chip
-				{
-					type = MDSound.MDSound.enmInstrumentType.YM2608,
-					ID = 0,
-					Instrument = ym2608,
-					Update = ym2608.Update,
-					Start = ym2608.Start,
-					Stop = ym2608.Stop,
-					Reset = ym2608.Reset,
-					SamplingRate = (uint)MucomSampleRate,
-					Clock = (uint)OpnaMasterClock,
-					Volume = 0,
-					Option = new object[] { appendReaderCallback }
-				};
-				_mds = new MDSound.MDSound((uint)MucomSampleRate, 1024, new MDSound.MDSound.Chip[] { chip });
-
 				_driver = new Driver();
 				_driver.Init(
-					dat => _mds.WriteYM2608(0, (byte)dat.port, (byte)dat.address, (byte)dat.data),
+					dat => mdsound.MDSound.WriteYM2608(0, (byte)dat.port, (byte)dat.address, (byte)dat.data),
 					(_, __) => { },
-					bin,
+					srcBuf,
 					new object[] { false, true, false },
-					appendReaderCallback);
+					appendFileReaderCallback);
 
-				_driver.StartRendering(MucomSampleRate, OpnaMasterClock);
+				_driver.StartRendering(mdsound.SampleRate, MucomMDSound.OpnaMasterClock);
 				_driver.MusicSTART(0);
 
-				_audioClip = AudioClip.Create("mucom", int.MaxValue, 2, MucomSampleRate, true, OnPCMReaderCallback, OnPCMSetPositionCallback);
-
-				AvailableSongData = true;
+				UnityAudioClip = AudioClip.Create("mucom", int.MaxValue, 2, mdsound.SampleRate, true, OnPCMReaderCallback, OnPCMSetPositionCallback);
+				_mdsound = mdsound;
 			}
 			catch
 			{
@@ -75,11 +36,17 @@ namespace Mucom
 			}
 		}
 
+		public MucomAudioClip(MucomMDSound mdsound, byte[] srcBuf, System.Func<string, Stream> appendFileReaderCallback) :
+			this(mdsound, srcBuf.Select(x => new MmlDatum(x)).ToArray(), appendFileReaderCallback)
+		{
+		}
+
 		public void Dispose()
 		{
-			if (_audioClip != null)
+			if (UnityAudioClip != null)
 			{
-				Object.Destroy(_audioClip);
+				Object.Destroy(UnityAudioClip);
+				UnityAudioClip = null;
 			}
 			if (_driver != null)
 			{
@@ -87,31 +54,12 @@ namespace Mucom
 			}
 		}
 
-		public AudioClip UnityAudioClip
-		{
-			get
-			{
-				return _audioClip;
-			}
-		}
-
-		public bool AvailableSongData
-		{
-			get;
-		}
-
-		public string CompileResult
-		{
-			get
-			{
-				return string.Empty;
-			}
-		}
+		public AudioClip UnityAudioClip { get; private set; }
 
 		private void OnPCMReaderCallback(float[] data)
 		{
 			var tmp = new short[data.Length];
-			_mds.Update(tmp, 0, data.Length, _driver.Rendering);
+			_mdsound.MDSound.Update(tmp, 0, data.Length, _driver.Rendering);
 
 			for (int i = 0; i < data.Length; i++)
 			{
@@ -122,6 +70,5 @@ namespace Mucom
 		private void OnPCMSetPositionCallback(int position)
 		{
 		}
-
 	}
 }
